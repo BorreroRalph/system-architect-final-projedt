@@ -21,13 +21,25 @@ namespace FiberView
     {
         FerrySchedule ferrySchedule;
         string con = "http://localhost/phpmyadmin/index.php?route=/database/structure&server=1&db=fiberview";
+        private Form2 form2;
         public Form1()
         {
             InitializeComponent();
             ReadAndDeserializeJson();
+            form2 = new Form2();
+            form2.FormClosed += Form2_FormClosed;
         }
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show(); // Show Form1 when Form2 is closed
+        }
+        private void Next_Click(object sender, EventArgs e)
+        {
+            form2.Show();
 
-
+            this.Hide();
+            
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             ReadAndDeserializeJson();
@@ -103,8 +115,10 @@ namespace FiberView
                 Console.WriteLine("Error deserializing JSON." + ex.Message);
             }
         }
+
+        
     }
-   
+
     public class FerrySchedule
     {
         public  List<FerryScheduleItem> ferry_schedule { get; set; }

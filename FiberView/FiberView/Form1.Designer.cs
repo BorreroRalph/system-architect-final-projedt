@@ -44,6 +44,7 @@ namespace FiberView
             this.Next.TabIndex = 1;
             this.Next.Text = "View";
             this.Next.UseVisualStyleBackColor = true;
+            this.Next.Click += new System.EventHandler(this.Next_Click);
             // 
             // schedule
             // 
