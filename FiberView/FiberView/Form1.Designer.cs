@@ -31,7 +31,9 @@ namespace FiberView
         {
             this.Next = new System.Windows.Forms.Button();
             this.schedule = new System.Windows.Forms.DataGridView();
+            this.camera = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.schedule)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camera)).BeginInit();
             this.SuspendLayout();
             // 
             // Next
@@ -48,25 +50,37 @@ namespace FiberView
             this.schedule.AllowUserToAddRows = false;
             this.schedule.AllowUserToDeleteRows = false;
             this.schedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.schedule.Location = new System.Drawing.Point(420, 57);
+            this.schedule.Location = new System.Drawing.Point(405, 314);
             this.schedule.Name = "schedule";
             this.schedule.ReadOnly = true;
             this.schedule.RowHeadersWidth = 51;
             this.schedule.RowTemplate.Height = 24;
-            this.schedule.Size = new System.Drawing.Size(500, 478);
+            this.schedule.Size = new System.Drawing.Size(593, 236);
             this.schedule.TabIndex = 2;
+            // 
+            // camera
+            // 
+            this.camera.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.camera.Location = new System.Drawing.Point(482, 27);
+            this.camera.Name = "camera";
+            this.camera.Size = new System.Drawing.Size(461, 261);
+            this.camera.TabIndex = 3;
+            this.camera.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 581);
+            this.ClientSize = new System.Drawing.Size(1025, 584);
+            this.Controls.Add(this.camera);
             this.Controls.Add(this.schedule);
             this.Controls.Add(this.Next);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FiberView";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.schedule)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.camera)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -74,6 +88,7 @@ namespace FiberView
         #endregion
         private System.Windows.Forms.Button Next;
         private System.Windows.Forms.DataGridView schedule;
+        private System.Windows.Forms.PictureBox camera;
     }
 }
 

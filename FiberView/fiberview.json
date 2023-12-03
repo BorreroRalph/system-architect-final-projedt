@@ -1,49 +1,94 @@
 {
-  "ferry_schedule": [
-    {
-      "boat_name": "MB D'Invaders",
-      "max_capacity": "40",
-      "departures": [
-        { "time": "08:00", "destination": "Iloilo" },
-        { "time": "10:30", "destination": "Iloilo" },
-        { "time": "14:15", "destination": "Iloilo" }
-      ]
-    },
-    {
-      "boat_name": "MB Ron Jayredine",
-      "max_capacity": "40",
-      "departures": [
-        { "time": "09:00", "destination": "Iloilo" },
-        { "time": "11:30", "destination": "Iloilo" },
-        { "time": "15:45", "destination": "Iloilo" }
-      ]
-    },
-    {
-      "boat_name": "MB Water Bus Lucila",
-      "max_capacity": "40",
-      "departures": [
-        { "time": "07:45", "destination": "Iloilo" },
-        { "time": "10:00", "destination": "Iloilo" },
-        { "time": "13:30", "destination": "Iloilo" }
-      ]
-    },
-    {
-      "boat_name": "MB SJ Zion",
-      "max_capacity": "40",
-      "departures": [
-        { "time": "08:30", "destination": "Iloilo" },
-        { "time": "12:00", "destination": "Iloilo" },
-        { "time": "16:15", "destination": "Iloilo" }
-      ]
-    },
-    {
-      "boat_name": "MB Genne Love",
-      "max_capacity": "40",
-      "departures": [
-        { "time": "09:15", "destination": "Iloilo" },
-        { "time": "11:45", "destination": "Iloilo" },
-        { "time": "14:30", "destination": "Iloilo" }
-      ]
-    }
-  ]
+    "ferry_schedule": [
+        {
+            "Boat_name": "MB D'Invaders",
+            "Max_capacity": "40",
+            "Departures": [
+                {
+                    "Time": "08:00",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "10:30",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "14:15",
+                    "Destination": "Iloilo"
+                }
+            ]
+        },
+        {
+            "Boat_name": "MB Ron Jayredine",
+            "Max_capacity": "40",
+            "Departures": [
+                {
+                    "Time": "09:00",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "11:30",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "15:45",
+                    "Destination": "Iloilo"
+                }
+            ]
+        },
+        {
+            "Boat_name": "MB Water Bus Lucila",
+            "Max_capacity": "40",
+            "Departures": [
+                {
+                    "Time": "07:45",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "10:00",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "13:30",
+                    "Destination": "Iloilo"
+                }
+            ]
+        },
+        {
+            "Boat_name": "MB SJ Zion",
+            "Max_capacity": "40",
+            "Departures": [
+                {
+                    "Time": "08:30",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "12:00",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "16:15",
+                    "Destination": "Iloilo"
+                }
+            ]
+        },
+        {
+            "Boat_name": "MB Genne Love",
+            "Max_capacity": "40",
+            "Departures": [
+                {
+                    "Time": "09:15",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "11:45",
+                    "Destination": "Iloilo"
+                },
+                {
+                    "Time": "14:30",
+                    "Destination": "Iloilo"
+                }
+            ]
+        }
+    ]
 }
