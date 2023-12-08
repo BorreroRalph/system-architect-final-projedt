@@ -119,3 +119,6 @@ C:\Users\asus\Documents\GitHub\system_architecture\system-architect-final-projed
 C:\Users\asus\Documents\GitHub\system_architecture\system-architect-final-projedt\FiberView\FiberView\bin\Debug\AForge.Video.xml
 C:\Users\asus\Documents\GitHub\system_architecture\system-architect-final-projedt\FiberView\FiberView\bin\Debug\AForge.Video.DirectShow.xml
 C:\Users\asus\Documents\GitHub\system_architecture\system-architect-final-projedt\FiberView\FiberView\bin\Debug\fiberview.json
+C:\Users\asus\Documents\GitHub\system_architecture\system-architect-final-projedt\FiberView\FiberView\bin\Debug\Form2.resx
+C:\Users\asus\Documents\GitHub\system_architecture\system-architect-final-projedt\FiberView\FiberView\bin\Debug\Form2.cs
+C:\Users\asus\Documents\GitHub\system_architecture\system-architect-final-projedt\FiberView\FiberView\bin\Debug\Form2.Designer.cs

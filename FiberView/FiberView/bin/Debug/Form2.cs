@@ -39,7 +39,17 @@ namespace FiberView
             this.Hide();
             this.Dispose();
         }
-        
+        private string GetNextAvailableBoat(List<FerryScheduleItem> scheduleItems, string currentBoat)
+        {
+            foreach (var scheduleItem in scheduleItems)
+            {
+                if (scheduleItem.Boat_name != currentBoat)
+                {
+                    return scheduleItem.Boat_name;
+                }
+            }
+            return currentBoat; // If no other boat found, return the current boat
+        }
         private void add(string passengerInfo)
         {
            
@@ -73,7 +83,8 @@ namespace FiberView
                     DateTime schedTime13 = DateTime.Today.AddHours(9).AddMinutes(15);
                     DateTime schedTime14 = DateTime.Today.AddHours(11).AddMinutes(45);
                     DateTime schedTime15 = DateTime.Today.AddHours(14).AddMinutes(30);
-                   
+
+                    string currentHour = currentTime.ToString("HH:mm");
                     MySqlCommand countCommand = connection.CreateCommand();
                     int rowCount = Convert.ToInt32(countCommand.ExecuteScalar());
                     DataTable table = new DataTable();
