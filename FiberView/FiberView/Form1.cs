@@ -24,14 +24,11 @@ namespace FiberView
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
         
-        string con = "Server=localhost;Database=fiberview;Uid=root;Pwd=;";
-        MySqlConnection connection; 
         private Form2 form2;
         public Form1()
         {
             InitializeComponent();
             
-            connection = new MySqlConnection(con);
             ReadAndDeserializeJson();
             form2 = new Form2();
             form2.FormClosed += Form2_FormClosed;
@@ -129,10 +126,10 @@ namespace FiberView
 
         private void add (string passengerInfo)
         {
-           
+            var database = new database();
             try{
-                
-                connection.Open();
+                if (database.connect_db())
+                {
                 foreach (var scheduleItem in ferrySchedule.ferry_schedule)
             {
                 int maxCapacity = int.Parse(scheduleItem.Max_capacity);
@@ -161,62 +158,75 @@ namespace FiberView
                 DateTime schedTime15 = DateTime.Today.AddHours(14).AddMinutes(30);
 
                 string currentHour = currentTime.ToString("HH:mm");
-                MySqlCommand countCommand = connection.CreateCommand();
-                countCommand.CommandText = $"SELECT COUNT(*) FROM {boatName}";
-                int rowCount = Convert.ToInt32(countCommand.ExecuteScalar());
-                    
-                if (rowCount <= maxCapacity || currentTime <= schedTime1 || currentTime <= schedTime2 || currentTime <= schedTime3)
+                string invaders = "SELECT COUNT(*) FROM `mb d'invaders`";
+                int rowCount1 = Convert.ToInt32(invaders);
+                string jayredine = "SELECT COUNT(*) FROM `mb ron jayredine`";
+                int rowCount2 = Convert.ToInt32(jayredine);
+                string lucila = "SELECT COUNT(*) FROM `mb water bus lucila`";
+                int rowCount3 = Convert.ToInt32(lucila);
+                string zion = "SELECT COUNT(*) FROM `mb sj zion`";
+                int rowCount4 = Convert.ToInt32(zion);
+                string love = "SELECT COUNT(*) FROM `mb genne love`";
+                int rowCount5 = Convert.ToInt32(love);
+
+                    if (rowCount1 <= maxCapacity || currentTime <= schedTime1 || currentTime <= schedTime2 || currentTime <= schedTime3)
                 { 
                         // Insert into the new boat's table
-                        string query = "INSERT INTO 'MB D'Invaders'(passenger, destination) VALUES (@passengerInfo, @destination)";
-                        MySqlCommand command = new MySqlCommand(query, connection);
+                        string query = "INSERT INTO `mb d'invaders`(passenger, destination) VALUES (@passengerInfo, @destination)";
+                        MySqlCommand command = new MySqlCommand(query);
                         command.Parameters.AddWithValue("@passengerInfo", passengerInfo);
                         command.Parameters.AddWithValue("@destination", destination);
                         int rowsAffected = command.ExecuteNonQuery();
                         Console.WriteLine($"Rows affected for MB D'Invaders: {rowsAffected}");
-                        rowCount = 0;
+                        rowCount1 = 0;
                     }
-                    else if (rowCount <= maxCapacity || currentTime <= schedTime4 || currentTime <= schedTime5 || currentTime <= schedTime6)
+                    else if (rowCount2 <= maxCapacity || currentTime <= schedTime4 || currentTime <= schedTime5 || currentTime <= schedTime6)
                     {
-                        string query = "INSERT INTO 'MB Ron Jayredine'(passenger, destination) VALUES (@passengerInfo, @destination)";
-                        MySqlCommand command = new MySqlCommand(query, connection);
+                        string query = "INSERT INTO `mb ron jayredine`(passenger, destination) VALUES (@passengerInfo, @destination)";
+                        MySqlCommand command = new MySqlCommand(query);
                         command.Parameters.AddWithValue("@passengerInfo", passengerInfo);
                         command.Parameters.AddWithValue("@destination", destination);
                         int rowsAffected = command.ExecuteNonQuery();
                         Console.WriteLine($"Rows affected for MB Ron Jayredine: {rowsAffected}");
-                        rowCount = 0;
+                        rowCount2 = 0;
                     }
-                    else if (rowCount <= maxCapacity || currentTime <= schedTime7 || currentTime <= schedTime8 || currentTime <= schedTime9)
+                    else if (rowCount3 <= maxCapacity || currentTime <= schedTime7 || currentTime <= schedTime8 || currentTime <= schedTime9)
                     {
-                        string query = "INSERT INTO 'MB Water Bus Lucila'(passenger, destination) VALUES (@passengerInfo, @destination)";
-                        MySqlCommand command = new MySqlCommand(query, connection);
+                        string query = "INSERT INTO `mb water bus lucila`(passenger, destination) VALUES (@passengerInfo, @destination)";
+                        MySqlCommand command = new MySqlCommand(query);
                         command.Parameters.AddWithValue("@passengerInfo", passengerInfo);
                         command.Parameters.AddWithValue("@destination", destination);
                         int rowsAffected = command.ExecuteNonQuery();
                         Console.WriteLine($"Rows affected for MB Water Bus Lucila: {rowsAffected}");
-                        rowCount = 0;
+                        rowCount3 = 0;
                     }
-                    else if (rowCount <= maxCapacity || currentTime <= schedTime10 || currentTime <= schedTime11 || currentTime <= schedTime12)
+                    else if (rowCount4 <= maxCapacity || currentTime <= schedTime10 || currentTime <= schedTime11 || currentTime <= schedTime12)
                     {
-                        string query = "INSERT INTO 'MB SJ Zion'(passenger, destination) VALUES (@passengerInfo, @destination)";
-                        MySqlCommand command = new MySqlCommand(query, connection);
+                        string query = "INSERT INTO `mb sj zion`(passenger, destination) VALUES (@passengerInfo, @destination)";
+                        MySqlCommand command = new MySqlCommand(query);
                         command.Parameters.AddWithValue("@passengerInfo", passengerInfo);
                         command.Parameters.AddWithValue("@destination", destination);
                         int rowsAffected = command.ExecuteNonQuery();
                         Console.WriteLine($"Rows affected for MB SJ Zion: {rowsAffected}");
-                        rowCount = 0;
+                        rowCount4 = 0;
                     }
-                    else if (rowCount <= maxCapacity || currentTime <= schedTime13 || currentTime <= schedTime14 || currentTime <= schedTime15)
+                    else if (rowCount5 <= maxCapacity || currentTime <= schedTime13 || currentTime <= schedTime14 || currentTime <= schedTime15)
                     {
-                        string query = "INSERT INTO 'MB Genne Love'(passenger, destination) VALUES (@passengerInfo, @destination)";
-                        MySqlCommand command = new MySqlCommand(query, connection);
+                        string query = "INSERT INTO `mb genne love`(passenger, destination) VALUES (@passengerInfo, @destination)";
+                        MySqlCommand command = new MySqlCommand(query);
                         command.Parameters.AddWithValue("@passengerInfo", passengerInfo);
                         command.Parameters.AddWithValue("@destination", destination);
                         int rowsAffected = command.ExecuteNonQuery();
                         Console.WriteLine($"Rows affected for MB Genne Love: {rowsAffected}");
-                        rowCount = 0;
+                        rowCount5 = 0;
                     }
 
+                }
+
+                }
+                else
+                {
+                    MessageBox.Show("Error");
                 }
 
             } 
@@ -226,7 +236,7 @@ namespace FiberView
     }
     finally
     {
-        connection.Close();
+        database.close_db();
     }       
             }
             
@@ -271,6 +281,7 @@ private string GetDestinationFromJSON(FerryScheduleItem scheduleItem)
         private void Form1_Load(object sender, EventArgs e)
         {
             ReadAndDeserializeJson();
+            
         }
 
         private void ReadAndDeserializeJson()

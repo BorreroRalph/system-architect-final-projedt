@@ -17,18 +17,18 @@ namespace FiberView
     public partial class Form2 : Form
     {
         FerrySchedule ferrySchedule;
-        string con = "Server=localhost;Database=fiberview;Uid=root;Pwd=;";
-        MySqlConnection connection;
+        
         public Form2()
         {
             InitializeComponent();
             ReadAndDeserializeJson();
-            connection = new MySqlConnection(con);
+
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
             ReadAndDeserializeJson();
+            load();
         }
 
         private void back_Click(object sender, EventArgs e)
@@ -39,29 +39,15 @@ namespace FiberView
             this.Hide();
             this.Dispose();
         }
-        private string GetNextAvailableBoat(List<FerryScheduleItem> scheduleItems, string currentBoat)
-        {
-            foreach (var scheduleItem in scheduleItems)
-            {
-                if (scheduleItem.Boat_name != currentBoat)
-                {
-                    return scheduleItem.Boat_name;
-                }
-            }
-            return currentBoat; // If no other boat found, return the current boat
-        }
-        private void add(string passengerInfo)
-        {
-           
+        
+        private void load()
+        {            
+            var database = new database();
             try
             {
-
-                
-                foreach (var scheduleItem in ferrySchedule.ferry_schedule)
+                if (database.connect_db())
                 {
-                    int maxCapacity = int.Parse(scheduleItem.Max_capacity);
-                    string boatName = scheduleItem.Boat_name;
-                    string destination = GetDestinationFromJSON(scheduleItem);
+
                     DateTime currentTime = DateTime.Now;
 
                     DateTime schedTime1 = DateTime.Today.AddHours(8);
@@ -83,63 +69,90 @@ namespace FiberView
                     DateTime schedTime13 = DateTime.Today.AddHours(9).AddMinutes(15);
                     DateTime schedTime14 = DateTime.Today.AddHours(11).AddMinutes(45);
                     DateTime schedTime15 = DateTime.Today.AddHours(14).AddMinutes(30);
+                    
+                    
 
-                    string currentHour = currentTime.ToString("HH:mm");
-                    MySqlCommand countCommand = connection.CreateCommand();
-                    int rowCount = Convert.ToInt32(countCommand.ExecuteScalar());
-                    DataTable table = new DataTable();
-
-                    if (rowCount <= maxCapacity || currentTime <= schedTime1 || currentTime <= schedTime2 || currentTime <= schedTime3)
-                    {
-                        // SELECT from the new boat's table
-                        string query = "SELECT * FROM 'MB D'Invaders'";
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);                        
+                    if (currentTime <= schedTime1 || currentTime <= schedTime2 || currentTime <= schedTime3)
+                    {                        
+                        string query = "SELECT * FROM `mb d'invaders`";
+                        MySqlCommand cmd = new MySqlCommand(query);
+                        cmd.Connection = database.connection;
+                        MySqlDataAdapter adapter = new MySqlDataAdapter();
+                        adapter.SelectCommand = cmd;
+                        DataTable table = new DataTable();
                         adapter.Fill(table);
-                        connection.Open();
-                        list.DataSource = table;
-                        connection.Close();
-
-                    }
-                    else if (rowCount <= maxCapacity || currentTime <= schedTime4 || currentTime <= schedTime5 || currentTime <= schedTime6)
-                    {
-                        string query = "SELECT * FROM 'MB Ron Jayredine'";
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-                        adapter.Fill(table);
-                        connection.Open();
-                        list.DataSource = table;
-                        connection.Close();
-                    }
-                    else if (rowCount <= maxCapacity || currentTime <= schedTime7 || currentTime <= schedTime8 || currentTime <= schedTime9)
-                    {
-                        string query = "SELECT * FROM 'MB Water Bus Lucila'";
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-                        adapter.Fill(table);
-                        connection.Open();
-                        list.DataSource = table;
-                        connection.Close();
-                    }
-                    else if (rowCount <= maxCapacity || currentTime <= schedTime10 || currentTime <= schedTime11 || currentTime <= schedTime12)
-                    {
-                        string query = "SELECT * FROM 'MB SJ Zion'";
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-                        adapter.Fill(table);
-                        connection.Open();
-                        list.DataSource = table;
-                        connection.Close();
-                    }
-                    else if (rowCount <= maxCapacity || currentTime <= schedTime13 || currentTime <= schedTime14 || currentTime <= schedTime15)
-                    {
-                        string query = "SELECT * FROM 'MB Genne Love'";
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-                        adapter.Fill(table);
-                        connection.Open();
-                        list.DataSource = table;
-                        connection.Close();
-                    }
+                        BindingSource bind = new BindingSource();
+                        bind.DataSource = table;
                         
-
+                        list.DataSource = table;
+                        database.close_db();
+                    }
+                    else if (currentTime <= schedTime4 || currentTime <= schedTime5 || currentTime <= schedTime6)
+                    {
+                        string query = "SELECT * FROM `mb ron jayredine`";
+                        MySqlCommand cmd = new MySqlCommand(query);
+                        cmd.Connection = database.connection;
+                        MySqlDataAdapter adapter = new MySqlDataAdapter();
+                        adapter.SelectCommand = cmd;
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        BindingSource bind = new BindingSource();
+                        bind.DataSource = table;
+                        
+                        list.DataSource = table;
+                        database.close_db();
+                    }
+                    else if (currentTime <= schedTime7 || currentTime <= schedTime8 || currentTime <= schedTime9)
+                    {
+                        string query = "SELECT * FROM `mb water bus lucila`";
+                        MySqlCommand cmd = new MySqlCommand(query);
+                        cmd.Connection = database.connection;
+                        MySqlDataAdapter adapter = new MySqlDataAdapter();
+                        adapter.SelectCommand = cmd;
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        BindingSource bind = new BindingSource();
+                        bind.DataSource = table;
+                        
+                        list.DataSource = table;
+                        database.close_db();
+                    }
+                    else if (currentTime <= schedTime10 || currentTime <= schedTime11 || currentTime <= schedTime12)
+                    {
+                        string query = "SELECT * FROM `mb sj zion`";
+                        MySqlCommand cmd = new MySqlCommand(query);
+                        cmd.Connection = database.connection;
+                        MySqlDataAdapter adapter = new MySqlDataAdapter();
+                        adapter.SelectCommand = cmd;
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        BindingSource bind = new BindingSource();
+                        bind.DataSource = table;
+                        
+                        list.DataSource = table;
+                        database.close_db();
+                    }
+                    else if (currentTime <= schedTime13 || currentTime <= schedTime14 || currentTime <= schedTime15)
+                    {
+                        string query = "SELECT * FROM `mb genne love`";
+                        MySqlCommand cmd = new MySqlCommand(query);
+                        cmd.Connection = database.connection;
+                        MySqlDataAdapter adapter = new MySqlDataAdapter();
+                        adapter.SelectCommand = cmd;
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        BindingSource bind = new BindingSource();
+                        bind.DataSource = table;
+                        
+                        list.DataSource = table;
+                        database.close_db();
+                    }
                 }
-
+                else
+                {
+                    MessageBox.Show("Error");
+                }                    
+                        
             }
             catch (MySqlException ex)
             {
@@ -147,7 +160,7 @@ namespace FiberView
             }
             finally
             {
-                connection.Close();
+                database.close_db();
             }
         }
 
