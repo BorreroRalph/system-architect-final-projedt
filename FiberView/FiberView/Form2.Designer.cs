@@ -36,18 +36,20 @@ namespace FiberView
             // 
             // back
             // 
+            this.back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(194)))), ((int)(((byte)(232)))));
             this.back.Location = new System.Drawing.Point(12, 546);
             this.back.Name = "back";
             this.back.Size = new System.Drawing.Size(119, 47);
             this.back.TabIndex = 0;
             this.back.Text = "Return";
-            this.back.UseVisualStyleBackColor = true;
+            this.back.UseVisualStyleBackColor = false;
             this.back.Click += new System.EventHandler(this.back_Click);
             // 
             // list
             // 
             this.list.AllowUserToAddRows = false;
             this.list.AllowUserToDeleteRows = false;
+            this.list.BackgroundColor = System.Drawing.SystemColors.Control;
             this.list.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.list.Location = new System.Drawing.Point(490, 58);
             this.list.Name = "list";
@@ -62,6 +64,7 @@ namespace FiberView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(208)))), ((int)(((byte)(228)))));
             this.ClientSize = new System.Drawing.Size(1056, 605);
             this.Controls.Add(this.list);
             this.Controls.Add(this.back);

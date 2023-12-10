@@ -40,18 +40,21 @@ namespace FiberView
             // 
             // Next
             // 
+            this.Next.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(194)))), ((int)(((byte)(232)))));
+            this.Next.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Next.Location = new System.Drawing.Point(64, 282);
             this.Next.Name = "Next";
             this.Next.Size = new System.Drawing.Size(101, 48);
             this.Next.TabIndex = 1;
             this.Next.Text = "View";
-            this.Next.UseVisualStyleBackColor = true;
+            this.Next.UseVisualStyleBackColor = false;
             this.Next.Click += new System.EventHandler(this.Next_Click);
             // 
             // schedule
             // 
             this.schedule.AllowUserToAddRows = false;
             this.schedule.AllowUserToDeleteRows = false;
+            this.schedule.BackgroundColor = System.Drawing.SystemColors.Control;
             this.schedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.schedule.Location = new System.Drawing.Point(405, 314);
             this.schedule.Name = "schedule";
@@ -63,6 +66,7 @@ namespace FiberView
             // 
             // camera
             // 
+            this.camera.BackColor = System.Drawing.Color.Black;
             this.camera.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.camera.Location = new System.Drawing.Point(482, 27);
             this.camera.Name = "camera";
@@ -80,18 +84,20 @@ namespace FiberView
             // 
             // scan
             // 
+            this.scan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(194)))), ((int)(((byte)(232)))));
             this.scan.Location = new System.Drawing.Point(211, 282);
             this.scan.Name = "scan";
             this.scan.Size = new System.Drawing.Size(106, 48);
             this.scan.TabIndex = 5;
             this.scan.Text = "Scan QR";
-            this.scan.UseVisualStyleBackColor = true;
+            this.scan.UseVisualStyleBackColor = false;
             this.scan.Click += new System.EventHandler(this.scan_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(208)))), ((int)(((byte)(228)))));
             this.ClientSize = new System.Drawing.Size(1025, 584);
             this.Controls.Add(this.scan);
             this.Controls.Add(this.lblDecodedInfo);
